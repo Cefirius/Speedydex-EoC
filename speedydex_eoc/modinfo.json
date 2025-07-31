@@ -1,0 +1,45 @@
+[
+  {
+    "type": "MOD_INFO",
+    "id": "speedydex_eoc",
+    "name": "SpeedyDex but EoC",
+    "authors": [ "Cef" ],
+    "maintainers": [ "Cef" ],
+    "description": "Through the power of EoC, your dex shall increases your speed... and also decrease it ;)",
+    "category": "rebalance",
+    "dependencies": [ "dda" ],
+    "conflicts": [ "speedydex_eoc_no_slowdown" ]
+  },
+  {
+    "type": "effect_on_condition",
+    "id": "EOC_SETUP_SPEEDYDEX_MUTATION",
+    "recurrence": 1,
+    "condition": { "not": { "u_has_trait": "SPEEDYDEX_MUTATION" } },
+    "deactivate_condition": { "u_has_trait": "SPEEDYDEX_MUTATION" },
+    "effect": [ { "u_add_trait": "SPEEDYDEX_MUTATION" } ]
+  },
+  {
+    "type": "mutation",
+    "id": "SPEEDYDEX_MUTATION",
+    "name": { "str": "SpeedyDex" },
+    "description": "Your speed is being modified by your dexterity.",
+    "purifiable": false,
+    "starting_trait": false,
+    "player_display": false,
+    "points": 0,
+    "enchantments": [
+      {
+        "values": [
+          {
+            "value": "SPEED",
+            "add": {
+              "math": [
+                "(u_val('dexterity') - 8) * 2"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
